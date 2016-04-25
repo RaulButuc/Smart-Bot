@@ -1,17 +1,17 @@
 ## SmartBot
 
-You can have a chat with SmartBot at https://rh9gfi16.apps.lair.io/
+You can have a chat with SmartBot over [here](https://rh9gfi16.apps.lair.io/)
 
-** Still under development **
+**Still under development**
 
 ## Known commands
 
-** hi **
-** set name **
-** how old are you **
-** ip **
-** help **
-** quit **
+* **hi**
+* **set name**
+* **how old are you**
+* **ip**
+* **help**
+* **quit**
 
 ## License
 
