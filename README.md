@@ -1,6 +1,6 @@
 ## SmartBot
 
-You can have a chat with SmartBot over [here](https://rh9gfi16.apps.lair.io/)
+You can have a chat with SmartBot over [here](https://hmfw8rsx.apps.lair.io/)
 
 **Still under development**
 
