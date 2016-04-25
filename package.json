@@ -1,0 +1,38 @@
+{
+  "name": "smart-bot",
+  "version": "1.0.0",
+  "description": "The next gen bot.",
+  "main": "app.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sourcelair-blueprints/echo-bot.git"
+  },
+  "keywords": [
+    "bot",
+    "smart",
+    "smart-bot",
+    "pro",
+    "start",
+    "next-gen",
+    "ai"
+  ],
+  "author": "Raul Butuc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RaulButuc/Smart-Bot/issues"
+  },
+  "homepage": "https://github.com/RaulButuc/Smart-Bot",
+  "dependencies": {
+    "botbuilder": "https://cf979153cd14525475d4-f860d1dda29fa1b9bcbf643d12472ae9.ssl.cf1.rackcdn.com/botbuilder_0.8.0.tar.gz",
+    "dotenv": "^2.0.0",
+    "jade": "^1.11.0",
+    "request": "^2.72.0",
+    "restify": "^4.0.4"
+  }
+}
