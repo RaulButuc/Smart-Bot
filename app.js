@@ -5,11 +5,10 @@ var restify = require('restify');
 var request = require('request');
 
 var server = restify.createServer();
-
-var iframeUrl = 'https://webchat.botframework.com/embed/' + process.env.APP_ID + '?s=' +
-  process.env.APP_IFRAME_SECRET;
+var iframeUrl = process.env.APP_IFRAME_URL;
 
 var smartBot = new builder.BotConnectorBot();
+
 smartBot.add('/', new builder.CommandDialog()
   .matches('^set name', builder.DialogAction.beginDialog('/profile'))
   .matches('^quit', builder.DialogAction.endDialog())
@@ -22,6 +21,7 @@ smartBot.add('/', new builder.CommandDialog()
       session.send('Hm, I did not understand you %s :(', session.userData.name);
     }
   }));
+
 smartBot.add('/profile', [
   function(session) {
     if (session.userData.name) {
@@ -36,10 +36,10 @@ smartBot.add('/profile', [
     session.endDialog();
   }
 ]);
+
 smartBot.add('/age', [
   function(session) {
-    session.send('Funny thing to ask. I was born one month ago. How about you?');
-    session.endDialog();
+    builder.Prompts.text(session, 'Funny thing to ask. I was born one month ago. How about you?');
   },
   function(session, results) {
     session.userData.age = results.response;
@@ -47,18 +47,21 @@ smartBot.add('/age', [
     session.endDialog();
   }
 ]);
+
 smartBot.add('/ip', [
   function(session) {
     builder.Prompts.text(session, 'Which IP you\'d like to track?');
   },
   function(session, results) {
     var ip = results.response;
+
     request('http://ip-api.com/json/' + ip, function(error, response, body) {
       if (error) {
         session.send('Oops, there was an error with your request "%s"', error);
         session.endDialog();
         return;
       }
+
       if (response.statusCode != 200) {
         session.send('Oops, we got a wrong status code "%s"', response.statusCode);
         session.endDialog();
@@ -84,6 +87,7 @@ smartBot.add('/ip', [
     });
   }
 ]);
+
 smartBot.add('/help', [
   function(session) {
     session.send('You can always ask me some questions, for example how old I am.');
@@ -105,6 +109,7 @@ server.use(smartBot.verifyBotFramework({
   appId: process.env.APP_ID,
   appSecret: process.env.APP_SECRET
 }));
+
 server.post('/bot-v1/my-messages', smartBot.listen());
 
 server.listen(process.env.PORT || 3000, function() {
